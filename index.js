@@ -108,10 +108,13 @@ app.post('/create', async (req, res) => {
 });
 
 // Start the server
-app.listen(3000, async () => {
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, async () => {
     await ensureDirectoryExists(TMP_DIR);  // Ensure the directory exists before starting the server
-    console.log('Server started on http://localhost:3000');
+    console.log(`Server started on http://localhost:${PORT}`);
 });
+
 
 // Export the app as the handler for Vercel's serverless function
 module.exports = app;
